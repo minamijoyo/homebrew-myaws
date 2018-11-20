@@ -2,10 +2,10 @@ require "formula"
 
 class Myaws < Formula
   homepage "https://github.com/minamijoyo/myaws"
-  url "https://github.com/minamijoyo/myaws/releases/download/v0.3.2/myaws_v0.3.2_darwin_amd64.tar.gz"
-  sha256 "b7f78c26a0ab765e82e5e02f1f21eb525dda57b2d519a4fdb453b55412c80dcd"
+  url "https://github.com/minamijoyo/myaws/releases/download/v0.3.3/myaws_v0.3.3_darwin_amd64.tar.gz"
+  sha256 "25b5a6872f1f938bb86d709b4255ff8f8b6891ff92ca0b644cff13c313f7cc60"
   head "https://github.com/minamijoyo/myaws.git"
-  version "0.3.2"
+  version "0.3.3"
 
   def install
     bin.install "myaws"
