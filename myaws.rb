@@ -2,9 +2,9 @@
 class Myaws < Formula
   desc "A human friendly AWS CLI written in Go"
   homepage "https://github.com/minamijoyo/myaws"
-  url "https://github.com/minamijoyo/myaws/releases/download/v0.3.20/myaws_v0.3.20_darwin_amd64.tar.gz"
-  version "0.3.20"
-  sha256 "decef2de65c15ca78c6d98ce80971523ae8b18ef0ffef9c143962e5676c641e1"
+  url "https://github.com/minamijoyo/myaws/releases/download/v0.3.21/myaws_v0.3.21_darwin_amd64.tar.gz"
+  version "0.3.21"
+  sha256 "06fc23e75f1d0e102678fe03fe2b0e0ffff2723c8bb6768cee1ee5c2e4677695"
 
   def install
     bin.install "myaws"
