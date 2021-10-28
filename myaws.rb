@@ -5,29 +5,36 @@
 class Myaws < Formula
   desc "A human friendly AWS CLI written in Go"
   homepage "https://github.com/minamijoyo/myaws"
-  version "0.4.0"
-  bottle :unneeded
+  version "0.4.1"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.0/myaws_v0.4.0_darwin_amd64.tar.gz"
-      sha256 "74b3c4a06d262f09fb4934e3cfe005f70ee46d5c138519c0a08b58ee6f5bb886"
+      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.1/myaws_v0.4.1_darwin_amd64.tar.gz"
+      sha256 "c61d7a00daad2360a939cc65b1bc287883d37f2277557cc0390dbb93411b0f1e"
+
+      def install
+        bin.install "myaws"
+        output = Utils.popen_read("#{bin}/myaws completion bash")
+        (bash_completion/"myaws").write output
+        output = Utils.popen_read("#{bin}/myaws completion zsh")
+        (zsh_completion/"_myaws").write output
+      end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.0/myaws_v0.4.0_linux_amd64.tar.gz"
-      sha256 "c1e26abb0fef9c9ef77af6679237fe2aba78ae8a52d583ebfa8ecf5c0dc40319"
-    end
-  end
+      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.1/myaws_v0.4.1_linux_amd64.tar.gz"
+      sha256 "ffb761dcbe31a6d2beb1aded4a002c906f9b35ea9cd2340c4322ade0617483ca"
 
-  def install
-    bin.install "myaws"
-    output = Utils.popen_read("#{bin}/myaws completion bash")
-    (bash_completion/"myaws").write output
-    output = Utils.popen_read("#{bin}/myaws completion zsh")
-    (zsh_completion/"_myaws").write output
+      def install
+        bin.install "myaws"
+        output = Utils.popen_read("#{bin}/myaws completion bash")
+        (bash_completion/"myaws").write output
+        output = Utils.popen_read("#{bin}/myaws completion zsh")
+        (zsh_completion/"_myaws").write output
+      end
+    end
   end
 
   test do
