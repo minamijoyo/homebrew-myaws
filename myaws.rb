@@ -5,12 +5,12 @@
 class Myaws < Formula
   desc "A human friendly AWS CLI written in Go"
   homepage "https://github.com/minamijoyo/myaws"
-  version "0.4.5"
+  version "0.4.6"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.5/myaws_v0.4.5_darwin_amd64.tar.gz"
-      sha256 "c4109a7baa5b018a1d8740a0634d1e7c0e4eb4cd1321c51ab03260508a3faf7a"
+    if Hardware::CPU.arm?
+      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.6/myaws_v0.4.6_darwin_arm64.tar.gz"
+      sha256 "ee5ce9d9810d86b232135aeac6275bea854c127a864b901358ea29db9e40f84c"
 
       def install
         bin.install "myaws"
@@ -20,9 +20,9 @@ class Myaws < Formula
         (zsh_completion/"_myaws").write output
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.5/myaws_v0.4.5_darwin_arm64.tar.gz"
-      sha256 "bb37e36bcbdf29fadd1892c74844989d178da7a69d1c137e8f015fa3b897d61e"
+    if Hardware::CPU.intel?
+      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.6/myaws_v0.4.6_darwin_amd64.tar.gz"
+      sha256 "40c1663175aa9541a97071037c9652787a56aebda2d6201ba0d13b34fe11334c"
 
       def install
         bin.install "myaws"
@@ -36,8 +36,8 @@ class Myaws < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.5/myaws_v0.4.5_linux_arm64.tar.gz"
-      sha256 "64b1d29f0c2def8372b3d3d9e0464a96f4cb0f9931be81e31d1b8ea5c7257642"
+      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.6/myaws_v0.4.6_linux_arm64.tar.gz"
+      sha256 "664c41daffc9a749e6bc26aacff82470a1f7b651ec32414800d4e8465e4fd146"
 
       def install
         bin.install "myaws"
@@ -48,8 +48,8 @@ class Myaws < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.5/myaws_v0.4.5_linux_amd64.tar.gz"
-      sha256 "f62e886a72c14d958d62b3dc994d324109825c50317690e7faa1424cc820943a"
+      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.6/myaws_v0.4.6_linux_amd64.tar.gz"
+      sha256 "13db5676284864bee55f192028edbbf5e877cc20f3af76e27654847e42bef0b6"
 
       def install
         bin.install "myaws"
