@@ -5,12 +5,12 @@
 class Myaws < Formula
   desc "A human friendly AWS CLI written in Go"
   homepage "https://github.com/minamijoyo/myaws"
-  version "0.4.7"
+  version "0.4.8"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.7/myaws_v0.4.7_darwin_arm64.tar.gz"
-      sha256 "dceb455ff9663c6ccae218bae58b94fe200f36b542e7cbc180704d1915dee985"
+      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.8/myaws_v0.4.8_darwin_arm64.tar.gz"
+      sha256 "a0145aa74e556e27457f92dbd24634eaf6fca3d6436af8c52a909ff5d966e075"
 
       def install
         bin.install "myaws"
@@ -21,8 +21,8 @@ class Myaws < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.7/myaws_v0.4.7_darwin_amd64.tar.gz"
-      sha256 "c7ecade26d93c1fa76461fd3918806a3aa385f693fa5149349fbceebb1eaa63b"
+      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.8/myaws_v0.4.8_darwin_amd64.tar.gz"
+      sha256 "c5ec3976a9182f1de7c7f9a4d58f3e2afa602f8514ee25415171951c3b55a375"
 
       def install
         bin.install "myaws"
@@ -35,9 +35,9 @@ class Myaws < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.7/myaws_v0.4.7_linux_arm64.tar.gz"
-      sha256 "b3aff06fdf09debd12ba076c66516014408886c1103fa71d9fa3fdfa9780a2f4"
+    if Hardware::CPU.intel?
+      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.8/myaws_v0.4.8_linux_amd64.tar.gz"
+      sha256 "bf8c4ebe16e1f97c91aecfc0378a44497cce514ac12ba030bc8abdb67c9d35a4"
 
       def install
         bin.install "myaws"
@@ -47,9 +47,9 @@ class Myaws < Formula
         (zsh_completion/"_myaws").write output
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.7/myaws_v0.4.7_linux_amd64.tar.gz"
-      sha256 "05b05507b20c340f27edf0b89778f8556ce1957542cb86fc8bd59aa1b215fbaa"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.8/myaws_v0.4.8_linux_arm64.tar.gz"
+      sha256 "7b1c91004bb740023a512d04959d3eaa1c92d4397a04e1da27639506da87c55f"
 
       def install
         bin.install "myaws"
