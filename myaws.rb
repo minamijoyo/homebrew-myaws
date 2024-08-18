@@ -5,12 +5,12 @@
 class Myaws < Formula
   desc "A human friendly AWS CLI written in Go"
   homepage "https://github.com/minamijoyo/myaws"
-  version "0.4.8"
+  version "0.4.9"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.8/myaws_v0.4.8_darwin_arm64.tar.gz"
-      sha256 "a0145aa74e556e27457f92dbd24634eaf6fca3d6436af8c52a909ff5d966e075"
+    on_intel do
+      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.9/myaws_v0.4.9_darwin_amd64.tar.gz"
+      sha256 "fd6133f9b1f8c0e064f169e736a7d96cd23fc36cac7c9a53b933e4154e94e790"
 
       def install
         bin.install "myaws"
@@ -20,9 +20,9 @@ class Myaws < Formula
         (zsh_completion/"_myaws").write output
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.8/myaws_v0.4.8_darwin_amd64.tar.gz"
-      sha256 "c5ec3976a9182f1de7c7f9a4d58f3e2afa602f8514ee25415171951c3b55a375"
+    on_arm do
+      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.9/myaws_v0.4.9_darwin_arm64.tar.gz"
+      sha256 "e9e376389865ecc2e0107e630cec16c8601ad5111119ad3cc3ad45638697d238"
 
       def install
         bin.install "myaws"
@@ -35,28 +35,32 @@ class Myaws < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.8/myaws_v0.4.8_linux_amd64.tar.gz"
-      sha256 "bf8c4ebe16e1f97c91aecfc0378a44497cce514ac12ba030bc8abdb67c9d35a4"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/minamijoyo/myaws/releases/download/v0.4.9/myaws_v0.4.9_linux_amd64.tar.gz"
+        sha256 "3003285d2dc876ecd0256c23c196502cef9d2533f71cda5fb29fd15c0c04539f"
 
-      def install
-        bin.install "myaws"
-        output = Utils.popen_read("#{bin}/myaws completion bash")
-        (bash_completion/"myaws").write output
-        output = Utils.popen_read("#{bin}/myaws completion zsh")
-        (zsh_completion/"_myaws").write output
+        def install
+          bin.install "myaws"
+          output = Utils.popen_read("#{bin}/myaws completion bash")
+          (bash_completion/"myaws").write output
+          output = Utils.popen_read("#{bin}/myaws completion zsh")
+          (zsh_completion/"_myaws").write output
+        end
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/minamijoyo/myaws/releases/download/v0.4.8/myaws_v0.4.8_linux_arm64.tar.gz"
-      sha256 "7b1c91004bb740023a512d04959d3eaa1c92d4397a04e1da27639506da87c55f"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/minamijoyo/myaws/releases/download/v0.4.9/myaws_v0.4.9_linux_arm64.tar.gz"
+        sha256 "84fdcef2fc608caae2ac65e13ce60f6b9862e464bf4c2c09a522116d8c3cbd49"
 
-      def install
-        bin.install "myaws"
-        output = Utils.popen_read("#{bin}/myaws completion bash")
-        (bash_completion/"myaws").write output
-        output = Utils.popen_read("#{bin}/myaws completion zsh")
-        (zsh_completion/"_myaws").write output
+        def install
+          bin.install "myaws"
+          output = Utils.popen_read("#{bin}/myaws completion bash")
+          (bash_completion/"myaws").write output
+          output = Utils.popen_read("#{bin}/myaws completion zsh")
+          (zsh_completion/"_myaws").write output
+        end
       end
     end
   end
